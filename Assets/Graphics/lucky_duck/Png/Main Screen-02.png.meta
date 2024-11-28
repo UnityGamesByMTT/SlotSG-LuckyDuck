@@ -1,0 +1,742 @@
+fileFormatVersion: 2
+guid: 30f072650f9b349959cfb25ee9907f17
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Main Screen-02_3
+      rect:
+        serializedVersion: 2
+        x: 3239
+        y: 4032
+        width: 390
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607700dff5d2c4182a78b02cc66cb9ec
+      internalID: -1666489057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_4
+      rect:
+        serializedVersion: 2
+        x: 4007
+        y: 4027
+        width: 390
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eca0fcefaa2747929b4ab6f8d35e92d
+      internalID: -1318330484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_5
+      rect:
+        serializedVersion: 2
+        x: 4747
+        y: 4023
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4effb085d1a7441d6a59fbfe1c141cff
+      internalID: -806765578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_6
+      rect:
+        serializedVersion: 2
+        x: 5519
+        y: 4025
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91d6c04e54504e27b47947c6f1616bd
+      internalID: -1887216907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3375.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee296f75ecc1456c9d6134150e17b6f
+      internalID: -3007761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_11
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 3375.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f341325a4fe4c5f8c72dd681de2a1f
+      internalID: -1226480876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_12
+      rect:
+        serializedVersion: 2
+        x: 1950
+        y: 3375.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1257584c30b4779b5871e8c21659dd
+      internalID: 2007067078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_13
+      rect:
+        serializedVersion: 2
+        x: 3243
+        y: 3412
+        width: 382
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c33d81a1fb840c8bb56bd7d2a29548
+      internalID: 199572414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_14
+      rect:
+        serializedVersion: 2
+        x: 4004
+        y: 3420
+        width: 389
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd03a1901b0044a3bac977d58d68c06
+      internalID: -1913149806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_15
+      rect:
+        serializedVersion: 2
+        x: 4747
+        y: 3407
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac21308a326654935aec5f1578080d8b
+      internalID: 1541716911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_16
+      rect:
+        serializedVersion: 2
+        x: 5519
+        y: 3406
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9019d00c808734744883d4d260174c12
+      internalID: -1194923585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_17
+      rect:
+        serializedVersion: 2
+        x: 6938
+        y: 3570
+        width: 1142
+        height: 641
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a75badc9ddd94840b0bd17430d7ba3a
+      internalID: 344553287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_19
+      rect:
+        serializedVersion: 2
+        x: 8391
+        y: 3616
+        width: 1148
+        height: 614
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe6ebd6baf604c0ea16988090777512
+      internalID: -1684163182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_27
+      rect:
+        serializedVersion: 2
+        x: 6931
+        y: 2733
+        width: 1155
+        height: 643
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453861454cf534b8f98221e683408fa3
+      internalID: 550086699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_30
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 2217
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dde7d88fab7f461a8648366ed1e72bd
+      internalID: -1118697288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_31
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 2212
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fae3f7023df459bba966064085f208
+      internalID: -1572993012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_32
+      rect:
+        serializedVersion: 2
+        x: 2300
+        y: 2216
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6647c67845b0243ca915325d47f1ab63
+      internalID: 1318884604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1592
+        width: 975
+        height: 562
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c660a9f75be4e63bbfa7c3516b8bf6
+      internalID: 1714478748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_41
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 1586
+        width: 975
+        height: 562
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1740be1f59474690840a31a2799a99e
+      internalID: -1583443612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_42
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 1599
+        width: 975
+        height: 562
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4547482c8d34c12aa8ff8d76d7ec59
+      internalID: -134071247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_47
+      rect:
+        serializedVersion: 2
+        x: 6938
+        y: 1890
+        width: 1148
+        height: 654
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f6d7e785f31435eb94f1e4097b3d74
+      internalID: 1288371482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_57
+      rect:
+        serializedVersion: 2
+        x: 6938
+        y: 1030
+        width: 1148
+        height: 633
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e190093607caa40e08af6b23f37f540a
+      internalID: -138998567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_73
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 3.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78bc5b57b69334754af0abf2d8bf984f
+      internalID: -316656823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_74
+      rect:
+        serializedVersion: 2
+        x: 3900
+        y: 3.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64251826e5905450db8f4c77c2f27316
+      internalID: -1799806491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main Screen-02_75
+      rect:
+        serializedVersion: 2
+        x: 4875
+        y: 3.5
+        width: 975
+        height: 562.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7122761b11b504462bca25fa0083f65a
+      internalID: 1421589440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Main Screen-02_0: -182756827
+      Main Screen-02_1: 813054210
+      Main Screen-02_10: -3007761
+      Main Screen-02_11: -1226480876
+      Main Screen-02_12: 2007067078
+      Main Screen-02_13: 199572414
+      Main Screen-02_14: -1913149806
+      Main Screen-02_15: 1541716911
+      Main Screen-02_16: -1194923585
+      Main Screen-02_17: 344553287
+      Main Screen-02_18: -1801601976
+      Main Screen-02_19: -1684163182
+      Main Screen-02_2: -1128896296
+      Main Screen-02_20: 1273138544
+      Main Screen-02_21: 110388103
+      Main Screen-02_22: -556746805
+      Main Screen-02_23: -964605045
+      Main Screen-02_24: 1515810659
+      Main Screen-02_25: 885154058
+      Main Screen-02_26: -1843957036
+      Main Screen-02_27: 550086699
+      Main Screen-02_28: -82349754
+      Main Screen-02_29: 1078580006
+      Main Screen-02_3: -1666489057
+      Main Screen-02_30: -1118697288
+      Main Screen-02_31: -1572993012
+      Main Screen-02_32: 1318884604
+      Main Screen-02_33: -198377732
+      Main Screen-02_34: -820050085
+      Main Screen-02_35: 1783501346
+      Main Screen-02_36: 755014714
+      Main Screen-02_37: 536032097
+      Main Screen-02_38: 91741307
+      Main Screen-02_39: 444403301
+      Main Screen-02_4: -1318330484
+      Main Screen-02_40: 1714478748
+      Main Screen-02_41: -1583443612
+      Main Screen-02_42: -134071247
+      Main Screen-02_43: -2129998159
+      Main Screen-02_44: 1053542830
+      Main Screen-02_45: 612195903
+      Main Screen-02_46: -1405539530
+      Main Screen-02_47: 1288371482
+      Main Screen-02_48: -1716068895
+      Main Screen-02_49: 261263557
+      Main Screen-02_5: -806765578
+      Main Screen-02_50: 612329205
+      Main Screen-02_51: 930160060
+      Main Screen-02_52: 1812845710
+      Main Screen-02_53: -1709738692
+      Main Screen-02_54: -1008294605
+      Main Screen-02_55: -707240009
+      Main Screen-02_56: 1918098113
+      Main Screen-02_57: -138998567
+      Main Screen-02_58: 962481368
+      Main Screen-02_59: 1947917526
+      Main Screen-02_6: -1887216907
+      Main Screen-02_60: -5861492
+      Main Screen-02_61: 1956236944
+      Main Screen-02_62: 1151596124
+      Main Screen-02_63: -1867607259
+      Main Screen-02_64: -731435104
+      Main Screen-02_65: 240493161
+      Main Screen-02_66: -1599021606
+      Main Screen-02_67: 1229851720
+      Main Screen-02_68: -551972921
+      Main Screen-02_69: -311230282
+      Main Screen-02_7: -186211778
+      Main Screen-02_70: -1415566389
+      Main Screen-02_71: -125895503
+      Main Screen-02_72: 1940188593
+      Main Screen-02_73: -316656823
+      Main Screen-02_74: -1799806491
+      Main Screen-02_75: 1421589440
+      Main Screen-02_76: 390922893
+      Main Screen-02_8: 1715830896
+      Main Screen-02_9: 1770991562
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
