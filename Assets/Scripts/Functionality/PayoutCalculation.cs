@@ -69,7 +69,7 @@ public class PayoutCalculation : MonoBehaviour
         }
     }
 
-    private void GeneratePayoutLines(int index)
+    internal void GeneratePayoutLines(int index)
     {
         GameObject MyLineObj = Instantiate(Line_Prefab, LineContainer);
         MyLineObj.transform.localPosition = new Vector2(InitialLinePosition.x, InitialLinePosition.y);

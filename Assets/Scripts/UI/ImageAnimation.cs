@@ -34,6 +34,7 @@ public class ImageAnimation : MonoBehaviour
 
 	public float delayBetweenLoop;
 
+	public bool startOnEnable;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -44,7 +45,8 @@ public class ImageAnimation : MonoBehaviour
 
 	private void OnEnable()
 	{
-
+		if(startOnEnable)
+		StartAnimation();
 	}
 
 	private void OnDisable()
