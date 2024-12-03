@@ -367,6 +367,8 @@ public class SlotBehaviour : MonoBehaviour
                 break;
 
         }
+        if(animScript.AnimationSpeed<=16)
+        animScript.AnimationSpeed=9;
     }
 
     #region SlotSpin
@@ -463,8 +465,10 @@ public class SlotBehaviour : MonoBehaviour
 
         if (SocketManager.playerdata.currentWining > 0)
             TotalWin_text.text = $" Win\n{SocketManager.playerdata.currentWining.ToString("f3")}";
-        else
-            TotalWin_text.text = $"Good Luck Next Time !";
+        else if(SocketManager.resultData.freeSpins.isNewAdded)
+            TotalWin_text.text = $"Win\n{SocketManager.resultData.freeSpins.count} Free Spins";
+        else 
+            TotalWin_text.text = $"Better Luck Next Time";
 
         if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("f3");
 

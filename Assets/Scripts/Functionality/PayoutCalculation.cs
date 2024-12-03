@@ -34,16 +34,17 @@ public class PayoutCalculation : MonoBehaviour
         for (int i = 0; i < leftPaylineButtons.Length; i++)
         {
             int line = Random.Range(0, lines.Count);
-            leftPaylineButtons[i].num = line;
-            rightPaylineButtons[i].num = line;
-            leftPaylineButtons[i].num_text.text = (line + 1).ToString();
-            rightPaylineButtons[i].num_text.text = (line + 1).ToString();
+            leftPaylineButtons[i].num = lines[line];
+            rightPaylineButtons[i].num = lines[line];
+            leftPaylineButtons[i].num_text.text = (lines[line] + 1).ToString();
+            rightPaylineButtons[i].num_text.text = (lines[line] + 1).ToString();
 
             leftPaylineButtons[i].GenerateLine = GeneratePayoutLines;
             rightPaylineButtons[i].GenerateLine = GeneratePayoutLines;
 
             leftPaylineButtons[i].DestroyLine = ResetLines;
             rightPaylineButtons[i].DestroyLine = ResetLines;
+            lines.RemoveAt(line);
         }
 
     }
