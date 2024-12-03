@@ -44,7 +44,7 @@ public class SocketIOManager : MonoBehaviour
     [SerializeField]
     private string testToken;
 
-    protected string gameID = "";
+    protected string gameID = "SL-LD";
 
     internal bool isLoaded = false;
 
@@ -400,13 +400,13 @@ public class SocketIOManager : MonoBehaviour
         HashSet<string> uniqueElements = new HashSet<string>(flattenedList);
 
         // Transformed list
-        List<string> transformedList = new List<string>();
-        foreach (string element in uniqueElements)
-        {
-            transformedList.Add(element.Replace(",", ""));
-        }
+        // List<string> transformedList = new List<string>();
+        // foreach (string element in uniqueElements)
+        // {
+        //     transformedList.Add(element.Replace(",", ""));
+        // }
 
-        return transformedList;
+        return uniqueElements.ToList();
     }
 }
 

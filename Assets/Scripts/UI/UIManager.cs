@@ -16,15 +16,6 @@ public class UIManager : MonoBehaviour
     private Button Menu_Button;
     [SerializeField]
     private GameObject Menu_Object;
-    [SerializeField]
-    private RectTransform Menu_RT;
-
-    //[SerializeField]
-    //private Button About_Button;
-    //[SerializeField]
-    //private GameObject About_Object;
-    //[SerializeField]
-    //private RectTransform About_RT;
 
     [Header("Settings UI")]
     [SerializeField]
@@ -85,9 +76,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button SettingsExit_Button;
     [SerializeField]
-    private Button Sound_Button;
+    private Slider Sound_Button;
     [SerializeField]
-    private Button Music_Button;
+    private Slider Music_Button;
 
     [SerializeField]
     private GameObject MusicOn_Object;
@@ -100,15 +91,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Win Popup")]
     [SerializeField]
-    private Sprite BigWin_Sprite;
+    private Sprite[] BigWin_Sprites;
     [SerializeField]
-    private Sprite HugeWin_Sprite;
+    private Sprite[] HugeWin_Sprites;
     [SerializeField]
-    private Sprite MegaWin_Sprite;
+    private Sprite[] MegaWin_Sprites;
+
     [SerializeField]
-    private Sprite Jackpot_Sprite;
-    [SerializeField]
-    private Image Win_Image;
+    private ImageAnimation Win_Image;
     [SerializeField]
     private GameObject WinPopup_Object;
     [SerializeField]
@@ -264,34 +254,44 @@ public class UIManager : MonoBehaviour
         if (SoundOff_Object) SoundOff_Object.SetActive(false);
 
         if (GameExit_Button) GameExit_Button.onClick.RemoveAllListeners();
-        if (GameExit_Button) GameExit_Button.onClick.AddListener(delegate { 
+        if (GameExit_Button) GameExit_Button.onClick.AddListener(delegate
+        {
             OpenPopup(QuitPopup_Object);
             Debug.Log("Quit event: pressed Big_X button");
-            
-            });
+
+        });
 
         if (NoQuit_Button) NoQuit_Button.onClick.RemoveAllListeners();
-        if (NoQuit_Button) NoQuit_Button.onClick.AddListener(delegate { if (!isExit) { 
-            ClosePopup(QuitPopup_Object); 
-            Debug.Log("quit event: pressed NO Button ");
-            } });
+        if (NoQuit_Button) NoQuit_Button.onClick.AddListener(delegate
+        {
+            if (!isExit)
+            {
+                ClosePopup(QuitPopup_Object);
+                Debug.Log("quit event: pressed NO Button ");
+            }
+        });
 
         if (CrossQuit_Button) CrossQuit_Button.onClick.RemoveAllListeners();
-        if (CrossQuit_Button) CrossQuit_Button.onClick.AddListener(delegate { if (!isExit) { 
-            ClosePopup(QuitPopup_Object); 
-            Debug.Log("quit event: pressed Small_X Button ");
-            
-            } });
+        if (CrossQuit_Button) CrossQuit_Button.onClick.AddListener(delegate
+        {
+            if (!isExit)
+            {
+                ClosePopup(QuitPopup_Object);
+                Debug.Log("quit event: pressed Small_X Button ");
+
+            }
+        });
 
         if (LBExit_Button) LBExit_Button.onClick.RemoveAllListeners();
         if (LBExit_Button) LBExit_Button.onClick.AddListener(delegate { ClosePopup(LBPopup_Object); });
 
         if (YesQuit_Button) YesQuit_Button.onClick.RemoveAllListeners();
-        if (YesQuit_Button) YesQuit_Button.onClick.AddListener(delegate{
+        if (YesQuit_Button) YesQuit_Button.onClick.AddListener(delegate
+        {
             CallOnExitFunction();
             Debug.Log("quit event: pressed YES Button ");
-            
-            });
+
+        });
 
         if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.RemoveAllListeners();
         if (CloseDisconnect_Button) CloseDisconnect_Button.onClick.AddListener(CallOnExitFunction);
@@ -300,21 +300,21 @@ public class UIManager : MonoBehaviour
         if (CloseAD_Button) CloseAD_Button.onClick.AddListener(CallOnExitFunction);
 
         if (FreeSpin_Button) FreeSpin_Button.onClick.RemoveAllListeners();
-        if (FreeSpin_Button) FreeSpin_Button.onClick.AddListener(delegate{ StartFreeSpins(FreeSpins); });
+        if (FreeSpin_Button) FreeSpin_Button.onClick.AddListener(delegate { StartFreeSpins(FreeSpins); });
 
         if (QuitSplash_button) QuitSplash_button.onClick.RemoveAllListeners();
         if (QuitSplash_button) QuitSplash_button.onClick.AddListener(delegate { OpenPopup(QuitPopup_Object); });
 
-        if (audioController) audioController.ToggleMute(false);
+        // if (audioController) audioController.ChangeVol(false);
 
         isMusic = true;
         isSound = true;
 
-        if (Sound_Button) Sound_Button.onClick.RemoveAllListeners();
-        if (Sound_Button) Sound_Button.onClick.AddListener(ToggleSound);
+        if (Sound_Button) Sound_Button.onValueChanged.RemoveAllListeners();
+        if (Sound_Button) Sound_Button.onValueChanged.AddListener(ToggleSound);
 
-        if (Music_Button) Music_Button.onClick.RemoveAllListeners();
-        if (Music_Button) Music_Button.onClick.AddListener(ToggleMusic);
+        if (Music_Button) Music_Button.onValueChanged.RemoveAllListeners();
+        if (Music_Button) Music_Button.onValueChanged.AddListener(ToggleMusic);
 
     }
 
@@ -349,20 +349,29 @@ public class UIManager : MonoBehaviour
 
     internal void PopulateWin(int value, double amount)
     {
-        switch(value)
+        Win_Image.textureArray.Clear();
+        switch (value)
         {
             case 1:
-                if (Win_Image) Win_Image.sprite = BigWin_Sprite;
+                Win_Image.rendererDelegate.sprite = BigWin_Sprites[0];
+                Win_Image.textureArray.AddRange(BigWin_Sprites);
+                Win_Image.AnimationSpeed = BigWin_Sprites.Length;
                 break;
             case 2:
-                if (Win_Image) Win_Image.sprite = HugeWin_Sprite;
+                Win_Image.rendererDelegate.sprite = HugeWin_Sprites[0];
+                Win_Image.textureArray.AddRange(HugeWin_Sprites);
+                Win_Image.AnimationSpeed = HugeWin_Sprites.Length;
+
+
                 break;
             case 3:
-                if (Win_Image) Win_Image.sprite = MegaWin_Sprite;
+                Win_Image.rendererDelegate.sprite = MegaWin_Sprites[0];
+                Win_Image.textureArray.AddRange(MegaWin_Sprites);
+                Win_Image.AnimationSpeed = MegaWin_Sprites.Length;
+
+
                 break;
-            case 4:
-                if (Win_Image) Win_Image.sprite = Jackpot_Sprite;
-                break;
+
         }
 
         StartPopupAnim(amount);
@@ -382,28 +391,29 @@ public class UIManager : MonoBehaviour
         if (Free_Text) Free_Text.text = spins.ToString() + " Free spins awarded.";
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
     }
-
     private void StartPopupAnim(double amount)
     {
         int initAmount = 0;
         if (WinPopup_Object) WinPopup_Object.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
-
-        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 5f).OnUpdate(() =>
+        Win_Image.StartAnimation();
+        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 4f).OnUpdate(() =>
         {
             if (Win_Text) Win_Text.text = initAmount.ToString();
         });
 
-        DOVirtual.DelayedCall(6f, () =>
+        DOVirtual.DelayedCall(5f, () =>
         {
             ClosePopup(WinPopup_Object);
+            Win_Image.StopAnimation();
+
             slotManager.CheckPopups = false;
         });
     }
 
     internal void ADfunction()
     {
-        OpenPopup(ADPopup_Object); 
+        OpenPopup(ADPopup_Object);
     }
 
     internal void InitialiseUIData(string SupportUrl, string AbtImgUrl, string TermsUrl, string PrivacyUrl, Paylines symbolsText)
@@ -526,27 +536,16 @@ public class UIManager : MonoBehaviour
     {
         if (audioController) audioController.PlayButtonAudio();
         if (Popup) Popup.SetActive(false);
-        if (!DisconnectPopup_Object.activeSelf) 
+        if (!DisconnectPopup_Object.activeSelf)
         {
             if (MainPopup_Object) MainPopup_Object.SetActive(false);
         }
     }
 
-    private void ToggleMusic()
+    private void ToggleMusic(float value)
     {
-        isMusic = !isMusic;
-        if (isMusic)
-        {
-            if (MusicOn_Object) MusicOn_Object.SetActive(true);
-            if (MusicOff_Object) MusicOff_Object.SetActive(false);
-            audioController.ToggleMute(false, "bg");
-        }
-        else
-        {
-            if (MusicOn_Object) MusicOn_Object.SetActive(false);
-            if (MusicOff_Object) MusicOff_Object.SetActive(true);
-            audioController.ToggleMute(true, "bg");
-        }
+            audioController.ChangeVol(value, "bg"); 
+
     }
 
     private void UrlButtons(string url)
@@ -554,23 +553,11 @@ public class UIManager : MonoBehaviour
         Application.OpenURL(url);
     }
 
-    private void ToggleSound()
+    private void ToggleSound(float value)
     {
-        isSound = !isSound;
-        if (isSound)
-        {
-            if (SoundOn_Object) SoundOn_Object.SetActive(true);
-            if (SoundOff_Object) SoundOff_Object.SetActive(false);
-            if (audioController) audioController.ToggleMute(false,"button");
-            if (audioController) audioController.ToggleMute(false,"wl");
-        }
-        else
-        {
-            if (SoundOn_Object) SoundOn_Object.SetActive(false);
-            if (SoundOff_Object) SoundOff_Object.SetActive(true);
-            if(audioController) audioController.ToggleMute(true,"button");
-            if (audioController) audioController.ToggleMute(true,"wl");
-        }
+        if (audioController) audioController.ChangeVol(value, "button");
+        if (audioController) audioController.ChangeVol(value, "wl");
+
     }
 
     private IEnumerator DownloadImage(string url)

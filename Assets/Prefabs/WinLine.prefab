@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b33b2e663e78774c9f0c9af55018725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3ff82b77279744dc097df3f89c323620, type: 2}
+  m_Material: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -66,16 +66,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_improveResolution: 1
-  m_Resolution: 10
+  m_improveResolution: 0
+  m_Resolution: 20
   m_useNativeSize: 0
   m_points:
   - {x: 0, y: 0}
-  lineThickness: 20
+  lineThickness: 50
   relativeSize: 0
   lineList: 0
   lineCaps: 0
   bezierSegmentsPerCurve: 10
-  LineJoins: 0
+  LineJoins: 1
   BezierMode: 0
   drivenExternally: 0

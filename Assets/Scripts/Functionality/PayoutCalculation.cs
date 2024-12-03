@@ -21,7 +21,7 @@ public class PayoutCalculation : MonoBehaviour
 
     [SerializeField] private ManageLineButtons[] leftPaylineButtons;
     [SerializeField] private ManageLineButtons[] rightPaylineButtons;
-
+    [SerializeField] private Color[] colors;
     GameObject TempObj = null;
 
     internal List<List<int>> paylines = new List<List<int>>();
@@ -84,6 +84,7 @@ public class PayoutCalculation : MonoBehaviour
         var newpointlist = new List<Vector2>(MyLine.Points);
         newpointlist.RemoveAt(0);
         MyLine.Points = newpointlist.ToArray();
+        MyLine.color=colors[index];
 
         // if(isStatic)
         // {

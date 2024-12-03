@@ -35,6 +35,10 @@ public class ImageAnimation : MonoBehaviour
 	public float delayBetweenLoop;
 
 	public bool startOnEnable;
+
+	private Sprite originalSprite;
+
+	public bool useOriginalSprite=true;
 	private void Awake()
 	{
 		if (Instance == null)
@@ -43,10 +47,14 @@ public class ImageAnimation : MonoBehaviour
 		}
 	}
 
+private void Start(){
+
+}
 	private void OnEnable()
 	{
 		if(startOnEnable)
 		StartAnimation();
+
 	}
 
 	private void OnDisable()
@@ -75,6 +83,8 @@ public class ImageAnimation : MonoBehaviour
 
 	public void StartAnimation()
 	{
+	originalSprite=rendererDelegate.sprite;
+
 		indexOfTexture = 0;
 		if (currentAnimationState == ImageState.NONE)
 		{
@@ -107,6 +117,9 @@ public class ImageAnimation : MonoBehaviour
 	{
 		if (currentAnimationState != 0)
 		{
+			if(useOriginalSprite)
+			rendererDelegate.sprite = originalSprite;
+			else
 			rendererDelegate.sprite = textureArray[0];
 			CancelInvoke("AnimationProcess");
 			currentAnimationState = ImageState.NONE;

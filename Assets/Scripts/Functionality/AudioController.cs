@@ -72,14 +72,8 @@ public class AudioController : MonoBehaviour
             case "win":
                 index = 1;
                 break;
-            case "lose":
-                index = 2;
-                break;
-            case "spinStop":
-                index = 3;
-                break;
             case "megaWin":
-                index = 4;
+                index = 2;
                 break;
         }
         StopWLAaudio();
@@ -137,27 +131,35 @@ public class AudioController : MonoBehaviour
         bg_adudio.Stop();
     }
 
-    internal void ToggleMute(bool toggle, string type="all")
+    internal void ChangeVol ( float value,string type)
     {
         switch (type)
         {
             case "bg":
-                bg_adudio.mute = toggle;
-                bg_audioBonus.mute = toggle;
+                bg_adudio.mute = (value<0.1);
+                bg_adudio.volume=value;
                 break;
             case "button":
-                audioPlayer_button.mute=toggle;
-                audioSpin_button.mute=toggle;
+                audioPlayer_button.mute=(value<0.1);
+                audioSpin_button.volume=value;
                 break;
             case "wl":
-                audioPlayer_wl.mute=toggle;
-                audioPlayer_Bonus.mute = toggle;
+                audioPlayer_wl.mute=(value<0.1);
+                audioPlayer_Bonus.mute = (value<0.1);
+                audioPlayer_wl.volume=value;
+                audioPlayer_Bonus.volume = value;
                 break;
             case "all":
-                audioPlayer_wl.mute = toggle;
-                bg_adudio.mute = toggle;
-                audioPlayer_button.mute = toggle;
-                audioSpin_button.mute = toggle;
+                audioPlayer_wl.mute = (value<0.1);
+                bg_adudio.mute = (value<0.1);
+                audioPlayer_button.mute = (value<0.1);
+                audioSpin_button.mute = (value<0.1);
+
+                audioPlayer_wl.volume = (value);
+                bg_adudio.volume = (value);
+                audioPlayer_button.volume = (value);
+                audioSpin_button.volume = (value);
+
                 break;
         }
     }
