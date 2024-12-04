@@ -438,15 +438,16 @@ public class UIManager : MonoBehaviour
             string text = null;
             if (paylines.symbols[i].Multiplier[0][0] != 0)
             {
-                text += "5x - " + paylines.symbols[i].Multiplier[0][0];
+                text += "all - " + (9*paylines.symbols[i].Multiplier[0][0])+"X";
+                text += "\n5x - " + paylines.symbols[i].Multiplier[0][0]+"X";
             }
             if (paylines.symbols[i].Multiplier[1][0] != 0)
             {
-                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0];
+                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0]+"X";
             }
             if (paylines.symbols[i].Multiplier[2][0] != 0)
             {
-                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0];
+                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0]+"X";
             }
             if (SymbolsText[i]) SymbolsText[i].text = text;
         }
