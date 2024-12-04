@@ -13,20 +13,20 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 	internal int num;
 	[SerializeField] internal TMP_Text num_text;
 
-	internal Action<int> GenerateLine;
-	internal Action DestroyLine;
+	internal Action<int,bool> GenerateLine;
+	internal Action<bool> DestroyLine;
 
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 
-			GenerateLine?.Invoke(num);
+			GenerateLine?.Invoke(num,false);
 			// slotManager.GenerateStaticLine(num_text);
 	}
 	public void OnPointerExit(PointerEventData eventData)
 	{
 
-			DestroyLine?.Invoke();
+			DestroyLine?.Invoke(false);
 			// slotManager.DestroyStaticLine();
 	}
 	public void OnPointerDown(PointerEventData eventData)
@@ -35,7 +35,7 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 		{
 			this.gameObject.GetComponent<Button>().Select();
 			// slotManager.GenerateStaticLine(num_text);
-			GenerateLine?.Invoke(num);
+			GenerateLine?.Invoke(num,false);
 
 		}
 	}
@@ -45,7 +45,7 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 		{
 			//Debug.Log("run on pointer up");
 			// slotManager.DestroyStaticLine();
-			DestroyLine?.Invoke();
+			DestroyLine?.Invoke(false);
 
 			DOVirtual.DelayedCall(0.1f, () =>
 			{

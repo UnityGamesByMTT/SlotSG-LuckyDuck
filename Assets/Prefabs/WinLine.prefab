@@ -66,16 +66,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_improveResolution: 0
-  m_Resolution: 20
+  m_improveResolution: 2
+  m_Resolution: 50
   m_useNativeSize: 0
   m_points:
   - {x: 0, y: 0}
-  lineThickness: 50
+  lineThickness: 40
   relativeSize: 0
   lineList: 0
   lineCaps: 0
   bezierSegmentsPerCurve: 10
-  LineJoins: 1
+  LineJoins: 0
   BezierMode: 0
   drivenExternally: 0

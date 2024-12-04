@@ -337,42 +337,16 @@ public class SocketIOManager : MonoBehaviour
         message.data = new BetData();
         message.data.currentBet = currBet;
         message.data.spins = 1;
-        message.data.currentLines = 20;
+        message.data.currentLines = 9;
         message.id = "SPIN";
         // Serialize message data to JSON
         string json = JsonUtility.ToJson(message);
         SendDataWithNamespace("message", json);
     }
 
-    private List<string> RemoveQuotes(List<string> stringList)
-    {
-        for (int i = 0; i < stringList.Count; i++)
-        {
-            stringList[i] = stringList[i].Replace("\"", ""); // Remove inverted commas
-        }
-        return stringList;
-    }
 
-    private List<string> ConvertListListIntToListString(List<List<int>> listOfLists)
-    {
-        List<string> resultList = new List<string>();
 
-        foreach (List<int> innerList in listOfLists)
-        {
-            // Convert each integer in the inner list to string
-            List<string> stringList = new List<string>();
-            foreach (int number in innerList)
-            {
-                stringList.Add(number.ToString());
-            }
 
-            // Join the string representation of integers with ","
-            string joinedString = string.Join(",", stringList.ToArray()).Trim();
-            resultList.Add(joinedString);
-        }
-
-        return resultList;
-    }
 
     private List<string> ConvertListOfListsToStrings(List<List<string>> inputList)
     {
