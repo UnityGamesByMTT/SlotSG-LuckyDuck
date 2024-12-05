@@ -91,14 +91,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Win Popup")]
     [SerializeField]
-    private Sprite[] BigWin_Sprites;
+    private Sprite BigWin_Sprites;
     [SerializeField]
-    private Sprite[] HugeWin_Sprites;
+    private Sprite HugeWin_Sprites;
     [SerializeField]
-    private Sprite[] MegaWin_Sprites;
+    private Sprite MegaWin_Sprites;
 
     [SerializeField]
-    private ImageAnimation Win_Image;
+    private Image Win_Image;
     [SerializeField]
     private GameObject WinPopup_Object;
     [SerializeField]
@@ -349,27 +349,16 @@ public class UIManager : MonoBehaviour
 
     internal void PopulateWin(int value, double amount)
     {
-        Win_Image.textureArray.Clear();
         switch (value)
         {
             case 1:
-                Win_Image.rendererDelegate.sprite = BigWin_Sprites[0];
-                Win_Image.textureArray.AddRange(BigWin_Sprites);
-                Win_Image.AnimationSpeed = BigWin_Sprites.Length;
+                Win_Image.sprite = BigWin_Sprites;
                 break;
             case 2:
-                Win_Image.rendererDelegate.sprite = HugeWin_Sprites[0];
-                Win_Image.textureArray.AddRange(HugeWin_Sprites);
-                Win_Image.AnimationSpeed = HugeWin_Sprites.Length;
-
-
+                Win_Image.sprite = HugeWin_Sprites;
                 break;
             case 3:
-                Win_Image.rendererDelegate.sprite = MegaWin_Sprites[0];
-                Win_Image.textureArray.AddRange(MegaWin_Sprites);
-                Win_Image.AnimationSpeed = MegaWin_Sprites.Length;
-
-
+                Win_Image.sprite = MegaWin_Sprites;
                 break;
 
         }
@@ -396,7 +385,6 @@ public class UIManager : MonoBehaviour
         int initAmount = 0;
         if (WinPopup_Object) WinPopup_Object.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
-        Win_Image.StartAnimation();
         DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 4f).OnUpdate(() =>
         {
             if (Win_Text) Win_Text.text = initAmount.ToString();
@@ -405,8 +393,6 @@ public class UIManager : MonoBehaviour
         DOVirtual.DelayedCall(5f, () =>
         {
             ClosePopup(WinPopup_Object);
-            Win_Image.StopAnimation();
-
             slotManager.CheckPopups = false;
         });
     }
