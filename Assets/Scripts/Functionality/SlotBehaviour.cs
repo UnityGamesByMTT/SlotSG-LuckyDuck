@@ -470,7 +470,7 @@ public class SlotBehaviour : MonoBehaviour
                 PopulateAnimationSprites(slotMatrix[i].slotImages[j], id);
             }
         }
-        Debug.Log(JsonConvert.SerializeObject(ringIndex)+"sdsdsdsd");
+
         yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < numberOfSlots; i++)
@@ -487,6 +487,7 @@ public class SlotBehaviour : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.3f);
+        if (audioController) audioController.StopWLAaudio();
         if (!IsAutoSpin && !IsFreeSpin)
             winAnimRoutine = StartCoroutine(ShowIconByPayline(SocketManager.resultData.linesToEmit, SocketManager.resultData.FinalsymbolsToEmit));
         else
@@ -509,6 +510,7 @@ public class SlotBehaviour : MonoBehaviour
         CheckWinPopups();
 
         yield return new WaitUntil(() => !CheckPopups);
+        if (audioController) audioController.StopWLAaudio();
         if (!IsAutoSpin && !IsFreeSpin)
         {
             ToggleButtonGrp(true);
@@ -686,12 +688,7 @@ public class SlotBehaviour : MonoBehaviour
 
             WinningsAnim(true);
         }
-        else
-        {
 
-            //if (audioController) audioController.PlayWLAudio("lose");
-            if (audioController) audioController.StopWLAaudio();
-        }
         CheckSpinAudio = false;
     }
 
