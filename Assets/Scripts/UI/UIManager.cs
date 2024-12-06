@@ -91,14 +91,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Win Popup")]
     [SerializeField]
-    private Sprite[] BigWin_Sprites;
+    private Sprite BigWin_Sprites;
     [SerializeField]
-    private Sprite[] HugeWin_Sprites;
+    private Sprite HugeWin_Sprites;
     [SerializeField]
-    private Sprite[] MegaWin_Sprites;
+    private Sprite MegaWin_Sprites;
 
     [SerializeField]
-    private ImageAnimation Win_Image;
+    private Image Win_Image;
     [SerializeField]
     private GameObject WinPopup_Object;
     [SerializeField]
@@ -222,7 +222,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
+        
         if (Menu_Button) Menu_Button.onClick.RemoveAllListeners();
         if (Menu_Button) Menu_Button.onClick.AddListener(OpenMenu);
 
@@ -349,27 +349,16 @@ public class UIManager : MonoBehaviour
 
     internal void PopulateWin(int value, double amount)
     {
-        Win_Image.textureArray.Clear();
         switch (value)
         {
             case 1:
-                Win_Image.rendererDelegate.sprite = BigWin_Sprites[0];
-                Win_Image.textureArray.AddRange(BigWin_Sprites);
-                Win_Image.AnimationSpeed = BigWin_Sprites.Length;
+                Win_Image.sprite = BigWin_Sprites;
                 break;
             case 2:
-                Win_Image.rendererDelegate.sprite = HugeWin_Sprites[0];
-                Win_Image.textureArray.AddRange(HugeWin_Sprites);
-                Win_Image.AnimationSpeed = HugeWin_Sprites.Length;
-
-
+                Win_Image.sprite = HugeWin_Sprites;
                 break;
             case 3:
-                Win_Image.rendererDelegate.sprite = MegaWin_Sprites[0];
-                Win_Image.textureArray.AddRange(MegaWin_Sprites);
-                Win_Image.AnimationSpeed = MegaWin_Sprites.Length;
-
-
+                Win_Image.sprite = MegaWin_Sprites;
                 break;
 
         }
@@ -396,17 +385,15 @@ public class UIManager : MonoBehaviour
         int initAmount = 0;
         if (WinPopup_Object) WinPopup_Object.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
-        Win_Image.StartAnimation();
-        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 4f).OnUpdate(() =>
+        Win_Image.transform.DOPunchScale(punch: new Vector3(0.5f, 0.5f, 0), duration: 2f, vibrato: 3, elasticity: 1);
+        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 3f).OnUpdate(() =>
         {
             if (Win_Text) Win_Text.text = initAmount.ToString();
         });
 
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(4f, () =>
         {
             ClosePopup(WinPopup_Object);
-            Win_Image.StopAnimation();
-
             slotManager.CheckPopups = false;
         });
     }
@@ -438,16 +425,16 @@ public class UIManager : MonoBehaviour
             string text = null;
             if (paylines.symbols[i].Multiplier[0][0] != 0)
             {
-                text += "all - " + (9*paylines.symbols[i].Multiplier[0][0])+"X";
-                text += "\n5x - " + paylines.symbols[i].Multiplier[0][0]+"X";
+                text += "all - " + (9 * paylines.symbols[i].Multiplier[0][0]) + "X";
+                text += "\n5x - " + paylines.symbols[i].Multiplier[0][0] + "X";
             }
             if (paylines.symbols[i].Multiplier[1][0] != 0)
             {
-                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0]+"X";
+                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0] + "X";
             }
             if (paylines.symbols[i].Multiplier[2][0] != 0)
             {
-                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0]+"X";
+                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0] + "X";
             }
             if (SymbolsText[i]) SymbolsText[i].text = text;
         }
@@ -545,7 +532,7 @@ public class UIManager : MonoBehaviour
 
     private void ToggleMusic(float value)
     {
-            audioController.ChangeVol(value, "bg"); 
+        audioController.ChangeVol(value, "bg");
 
     }
 
