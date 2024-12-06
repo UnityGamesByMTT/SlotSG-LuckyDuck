@@ -222,7 +222,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
+        
         if (Menu_Button) Menu_Button.onClick.RemoveAllListeners();
         if (Menu_Button) Menu_Button.onClick.AddListener(OpenMenu);
 
@@ -385,12 +385,13 @@ public class UIManager : MonoBehaviour
         int initAmount = 0;
         if (WinPopup_Object) WinPopup_Object.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
-        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 4f).OnUpdate(() =>
+        Win_Image.transform.DOPunchScale(punch: new Vector3(0.5f, 0.5f, 0), duration: 2f, vibrato: 3, elasticity: 1);
+        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 3f).OnUpdate(() =>
         {
             if (Win_Text) Win_Text.text = initAmount.ToString();
         });
 
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(4f, () =>
         {
             ClosePopup(WinPopup_Object);
             slotManager.CheckPopups = false;
@@ -424,16 +425,16 @@ public class UIManager : MonoBehaviour
             string text = null;
             if (paylines.symbols[i].Multiplier[0][0] != 0)
             {
-                text += "all - " + (9*paylines.symbols[i].Multiplier[0][0])+"X";
-                text += "\n5x - " + paylines.symbols[i].Multiplier[0][0]+"X";
+                text += "all - " + (9 * paylines.symbols[i].Multiplier[0][0]) + "X";
+                text += "\n5x - " + paylines.symbols[i].Multiplier[0][0] + "X";
             }
             if (paylines.symbols[i].Multiplier[1][0] != 0)
             {
-                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0]+"X";
+                text += "\n4x - " + paylines.symbols[i].Multiplier[1][0] + "X";
             }
             if (paylines.symbols[i].Multiplier[2][0] != 0)
             {
-                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0]+"X";
+                text += "\n3x - " + paylines.symbols[i].Multiplier[2][0] + "X";
             }
             if (SymbolsText[i]) SymbolsText[i].text = text;
         }
@@ -531,7 +532,7 @@ public class UIManager : MonoBehaviour
 
     private void ToggleMusic(float value)
     {
-            audioController.ChangeVol(value, "bg"); 
+        audioController.ChangeVol(value, "bg");
 
     }
 
