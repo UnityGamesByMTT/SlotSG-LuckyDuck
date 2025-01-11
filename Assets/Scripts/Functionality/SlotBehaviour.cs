@@ -15,7 +15,7 @@ public class SlotBehaviour : MonoBehaviour
     private Sprite[] myImages;  //images taken initially
 
     [Header("Slot Images")]
-   //class to store total images
+    //class to store total images
     [SerializeField]
     private List<SlotImage> slotMatrix;     //class to store the result matrix
     [SerializeField] private Image[] extraIcons;
@@ -180,6 +180,7 @@ public class SlotBehaviour : MonoBehaviour
         {
 
             IsAutoSpin = true;
+            if (!AutoSpinStop_Button.interactable) AutoSpinStop_Button.interactable = true;
             if (AutoSpinStop_Button) AutoSpinStop_Button.gameObject.SetActive(true);
             if (SlotStart_Button) SlotStart_Button.gameObject.SetActive(false);
 
@@ -198,6 +199,7 @@ public class SlotBehaviour : MonoBehaviour
         if (IsAutoSpin)
         {
             IsAutoSpin = false;
+            WasAutoSpinOn = false;
             if (AutoSpinStop_Button) AutoSpinStop_Button.gameObject.SetActive(false);
             if (SlotStart_Button) SlotStart_Button.gameObject.SetActive(true);
             StartCoroutine(StopAutoSpinCoroutine());
@@ -235,7 +237,7 @@ public class SlotBehaviour : MonoBehaviour
     {
         if (!IsFreeSpin)
         {
-            if (FSnum_text) FSnum_text.text = $"{spins}/{spins}";
+            if (FSnum_text) FSnum_text.text = $"{spins}/{totalFreeSpins}";
             if (FSBoard_Object) FSBoard_Object.SetActive(true);
             IsFreeSpin = true;
             ToggleButtonGrp(false);
@@ -264,7 +266,8 @@ public class SlotBehaviour : MonoBehaviour
             yield return new WaitForSeconds(SpinDelay);
         }
         reelBG.sprite = normalReel;
-
+        totalFreeSpins = 0;
+        uiManager.FreeSpins = 0;
         CancelInvoke("FreeSpinBlinkAnim");
         if (FSBoard_Object) FSBoard_Object.SetActive(false);
         if (WasAutoSpinOn)
@@ -276,6 +279,9 @@ public class SlotBehaviour : MonoBehaviour
             ToggleButtonGrp(true);
         }
         IsFreeSpin = false;
+        if (!AutoSpinStop_Button.interactable)
+            AutoSpinStop_Button.interactable = true;
+
     }
     #endregion
 
@@ -511,7 +517,7 @@ public class SlotBehaviour : MonoBehaviour
         {
 
             yield return new WaitForSeconds(0.1f);
-            StopSpinToggle=true;
+            StopSpinToggle = true;
         }
         else
         {
@@ -547,11 +553,11 @@ public class SlotBehaviour : MonoBehaviour
         if (audioController) audioController.StopWLAaudio();
         if (SocketManager.playerdata.currentWining > 0)
         {
-            SpinDelay = 1.2f;
+            SpinDelay = 2f;
         }
         else
         {
-            SpinDelay = 0.2f;
+            SpinDelay = 1f;
         }
         if (!IsAutoSpin && !IsFreeSpin)
             winAnimRoutine = StartCoroutine(ShowIconByPayline(SocketManager.resultData.linesToEmit, SocketManager.resultData.FinalsymbolsToEmit));
@@ -578,20 +584,12 @@ public class SlotBehaviour : MonoBehaviour
         if (!IsAutoSpin && !IsFreeSpin)
         {
             ToggleButtonGrp(true);
-            IsSpinning = false;
         }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-            IsSpinning = false;
-        }
+
+        IsSpinning = false;
+
         if (SocketManager.resultData.freeSpins.isNewAdded)
         {
-            if (IsAutoSpin)
-            {
-                StopAutoSpin();
-                yield return new WaitForSeconds(0.1f);
-            }
             if (IsFreeSpin)
             {
                 IsFreeSpin = false;
@@ -600,15 +598,21 @@ public class SlotBehaviour : MonoBehaviour
                     StopCoroutine(FreeSpinRoutine);
                     FreeSpinRoutine = null;
                 }
-                uiManager.FreeSpinPopUp((int)SocketManager.resultData.freeSpins.count, true);
+                // totalFreeSpins+=(int)SocketManager.resultData.freeSpins.count;
             }
-            else{
-                totalFreeSpins=(int)SocketManager.resultData.freeSpins.count;
-                uiManager.FreeSpinPopUp((int)SocketManager.resultData.freeSpins.count, false);
+            uiManager.FreeSpinProcess((int)SocketManager.resultData.freeSpins.count);
+            if (IsAutoSpin)
+            {
+                WasAutoSpinOn = true;
+                IsAutoSpin = false;
+                if (AutoSpinRoutine != null || tweenroutine != null)
+                    StopCoroutine(AutoSpinRoutine);
+                AutoSpinStop_Button.interactable = false;
+                // if (AutoSpinStop_Button) AutoSpinStop_Button.gameObject.SetActive(false);
+                // if (SlotStart_Button) SlotStart_Button.gameObject.SetActive(true);
+                // StopAutoSpin();
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(1.5f);
-            uiManager.CloseFreeSpinPopUP();
-            FreeSpin((int)SocketManager.resultData.freeSpins.count);
         }
     }
 
@@ -752,7 +756,6 @@ public class SlotBehaviour : MonoBehaviour
             for (int i = 0; i < points_AnimString.Count; i++)
             {
                 points_anim = points_AnimString[i]?.Split(',')?.Select(Int32.Parse)?.ToList();
-                Debug.Log(JsonConvert.SerializeObject(points_anim));
                 slotMatrix[points_anim[0]].slotImages[points_anim[1]].StartAnimation();
             }
 
