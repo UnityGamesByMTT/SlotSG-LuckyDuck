@@ -659,17 +659,17 @@ public class SlotBehaviour : MonoBehaviour
     }
     internal void CheckWinPopups()
     {
-        if (SocketManager.resultData.WinAmout > 0)
+        if (SocketManager.playerdata.currentWining >= currentTotalBet * 10 && SocketManager.playerdata.currentWining < currentTotalBet * 15)
         {
-            uiManager.PopulateWin(1, SocketManager.resultData.WinAmout);
+            uiManager.PopulateWin(1, SocketManager.playerdata.currentWining);
         }
-        else if (SocketManager.resultData.WinAmout >= currentTotalBet * 15 && SocketManager.resultData.WinAmout < currentTotalBet * 20)
+        else if (SocketManager.playerdata.currentWining >= currentTotalBet * 15 && SocketManager.playerdata.currentWining < currentTotalBet * 20)
         {
-            uiManager.PopulateWin(2, SocketManager.resultData.WinAmout);
+            uiManager.PopulateWin(2, SocketManager.playerdata.currentWining);
         }
-        else if (SocketManager.resultData.WinAmout >= currentTotalBet * 20)
+        else if (SocketManager.playerdata.currentWining >= currentTotalBet * 20)
         {
-            uiManager.PopulateWin(3, SocketManager.resultData.WinAmout);
+            uiManager.PopulateWin(3, SocketManager.playerdata.currentWining);
         }
         else
         {
