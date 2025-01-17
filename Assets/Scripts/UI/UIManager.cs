@@ -38,10 +38,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Button Paytable_Button;
-    [SerializeField]
-    private GameObject Paytable_Object;
-    [SerializeField]
-    private RectTransform Paytable_RT;
+    [SerializeField] private GameObject Paytable_Object;
+    [SerializeField] private RectTransform Paytable_RT;
 
     [Header("Popus UI")]
     [SerializeField]
@@ -171,14 +169,16 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private SocketIOManager socketManager;
+    [SerializeField] private Button SkipWinAnimation;
 
     private bool isMusic = true;
     private bool isSound = true;
     private bool isExit = false;
 
-    private int FreeSpins;
+    internal int FreeSpins;
 
-
+    private Tween WinPopupTextTween;
+    private Tween ClosePopupTween;
     private void Awake()
     {
         //if (Loading_Object) Loading_Object.SetActive(true);
@@ -222,15 +222,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
+
         if (Menu_Button) Menu_Button.onClick.RemoveAllListeners();
         if (Menu_Button) Menu_Button.onClick.AddListener(OpenMenu);
 
         if (Exit_Button) Exit_Button.onClick.RemoveAllListeners();
         if (Exit_Button) Exit_Button.onClick.AddListener(CloseMenu);
-
-        //if (About_Button) About_Button.onClick.RemoveAllListeners();
-        //if (About_Button) About_Button.onClick.AddListener(delegate { OpenPopup(AboutPopup_Object); });
 
         if (AboutExit_Button) AboutExit_Button.onClick.RemoveAllListeners();
         if (AboutExit_Button) AboutExit_Button.onClick.AddListener(delegate { ClosePopup(AboutPopup_Object); });
@@ -299,8 +296,8 @@ public class UIManager : MonoBehaviour
         if (CloseAD_Button) CloseAD_Button.onClick.RemoveAllListeners();
         if (CloseAD_Button) CloseAD_Button.onClick.AddListener(CallOnExitFunction);
 
-        if (FreeSpin_Button) FreeSpin_Button.onClick.RemoveAllListeners();
-        if (FreeSpin_Button) FreeSpin_Button.onClick.AddListener(delegate { StartFreeSpins(FreeSpins); });
+        // if (FreeSpin_Button) FreeSpin_Button.onClick.RemoveAllListeners();
+        // if (FreeSpin_Button) FreeSpin_Button.onClick.AddListener(delegate { StartFreeSpins(FreeSpins); });
 
         if (QuitSplash_button) QuitSplash_button.onClick.RemoveAllListeners();
         if (QuitSplash_button) QuitSplash_button.onClick.AddListener(delegate { OpenPopup(QuitPopup_Object); });
@@ -316,6 +313,26 @@ public class UIManager : MonoBehaviour
         if (Music_Button) Music_Button.onValueChanged.RemoveAllListeners();
         if (Music_Button) Music_Button.onValueChanged.AddListener(ToggleMusic);
 
+        if (SkipWinAnimation) SkipWinAnimation.onClick.RemoveAllListeners();
+        if (SkipWinAnimation) SkipWinAnimation.onClick.AddListener(SkipWin);
+
+    }
+
+    void SkipWin()
+    {
+        Debug.Log("Skip win called");
+        if (ClosePopupTween != null)
+        {
+            ClosePopupTween.Kill();
+            ClosePopupTween = null;
+        }
+        if (WinPopupTextTween != null)
+        {
+            WinPopupTextTween.Kill();
+            WinPopupTextTween = null;
+        }
+        ClosePopup(WinPopup_Object);
+        slotManager.CheckPopups = false;
     }
 
     private void SimulateClickByDefault()
@@ -366,32 +383,46 @@ public class UIManager : MonoBehaviour
         StartPopupAnim(amount);
     }
 
+
     private void StartFreeSpins(int spins)
     {
         if (MainPopup_Object) MainPopup_Object.SetActive(false);
         if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(false);
         slotManager.FreeSpin(spins);
     }
-
     internal void FreeSpinProcess(int spins)
     {
-        FreeSpins = spins;
-        if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(true);
-        if (Free_Text) Free_Text.text = spins.ToString() + " Free spins awarded.";
+        int ExtraSpins=spins-FreeSpins;
+        FreeSpins=spins;
+        slotManager.totalFreeSpins+=ExtraSpins;
+        Debug.Log("ExtraSpins: " +ExtraSpins);
+        Debug.Log("Total Spins: " +spins);
+        if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(true);           
+        if (Free_Text) Free_Text.text = ExtraSpins.ToString() + " Free spins awarded.";
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
+        DOVirtual.DelayedCall(2f, ()=>{
+            StartFreeSpins(spins);
+        });
+    }
+
+    internal void CloseFreeSpinPopUP()
+    {
+        // if (MainPopup_Object) MainPopup_Object.SetActive(false);
+        // if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(false);
+        ClosePopup(FreeSpinPopup_Object);
     }
     private void StartPopupAnim(double amount)
     {
-        int initAmount = 0;
+        double initAmount = 0;
         if (WinPopup_Object) WinPopup_Object.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
         Win_Image.transform.DOPunchScale(punch: new Vector3(0.5f, 0.5f, 0), duration: 2f, vibrato: 3, elasticity: 1);
-        DOTween.To(() => initAmount, (val) => initAmount = val, (int)amount, 3f).OnUpdate(() =>
+        WinPopupTextTween = DOTween.To(() => initAmount, (val) => initAmount = val, amount, 3f).OnUpdate(() =>
         {
-            if (Win_Text) Win_Text.text = initAmount.ToString();
+            if (Win_Text) Win_Text.text = initAmount.ToString("f3");
         });
 
-        DOVirtual.DelayedCall(4f, () =>
+        ClosePopupTween = DOVirtual.DelayedCall(4f, () =>
         {
             ClosePopup(WinPopup_Object);
             slotManager.CheckPopups = false;
