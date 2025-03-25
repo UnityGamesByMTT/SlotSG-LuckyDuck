@@ -245,25 +245,23 @@ public class SocketIOManager : MonoBehaviour
     private void SendDataWithNamespace(string eventName, string json = null)
     {
         // Send the message
-        if (this.manager.Socket != null && this.manager.Socket.IsOpen)
+        if (gameSocket != null && gameSocket.IsOpen) //BackendChanges
         {
             if (json != null)
             {
-                this.manager.Socket.Emit(eventName, json);
+                gameSocket.Emit(eventName, json);
                 Debug.Log("JSON data sent: " + json);
             }
             else
             {
-                this.manager.Socket.Emit(eventName);
+                gameSocket.Emit(eventName);
             }
-        }   
+        }
         else
         {
             Debug.LogWarning("Socket is not connected.");
         }
     }
-
-
 
     internal void CloseSocket()
     {
